@@ -70,18 +70,15 @@ bot.on('message', msg => {
 
     })
 
-            exports.run = (bot,message,args) =>{
-                let embed = new Discord.RichEmbed()
-
-                .setTitle("Pong: ")
-                .setColor("RANDON")
-                .setDescription(`O Ping do Bot é de ${Math.round(bot.ping)}ms!`)
-                .setFooter(`Comando de Ping`, bot.user.displayAvatarURL);
-            }
-            
-            exports.help ={
-                names: "ping"
-            }
+            bot.on('ready', () => {
+        console.log(`Logged in as ${bot.user.tag}!`);
+      });
+      
+      bot.on('message', msg => {
+        if (msg.content === '!ping') {
+          msg.reply(`Pong!, Seu Ping é de:  +${Date.now() - msg.createdTimestamp}` + ' ms');
+        }
+      });
 
 
 
